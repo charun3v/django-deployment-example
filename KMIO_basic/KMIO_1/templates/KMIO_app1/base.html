@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class = 'navbar navbar-expand-lg navbar-light bg-dark-static-top'>
+        <div class = 'container'>
+            <ul class = "nav navar-nav">
+                <li><a class = "navbar-brand" href="{% url 'index' %}">KMIO</a></li>
+                <li><a class = "nav-link" href="{% url 'admin:index' %}">ADMIN</a></li>
+                <li><a class = "nav-link" href="{% url 'KMIO_app1:info' %}">Info</a></li>
+                <li><a class = "nav-link" href="{% url 'KMIO_app1:registrations' %}">Register</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a class="nav-link" href="{% url 'KMIO_app1:user_logout'%}" >Logout</a></li>
+                {% else %}
+                    <li><a class="nav-link" href="{% url 'KMIO_app1:user_login' %}" >Login</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        {% block body_block %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
+
